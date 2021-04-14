@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mon café</title>
+    <link rel="stylesheet" href="./style/style.css" />
+    <!--Police-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <!--Police tite-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap"
+      rel="stylesheet"
+    />
+    <!--icone-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="background">
+      <div id="content">
+        <!--Colonne de gauche-->
+        <div id="leftColumn">
+          <h1>Mon café</h1>
+          <div class="up">
+            <div id="info">
+              <p>i</p>
+            </div>
+            <div id="infoBulle">
+              <h2>Comment ça marche ?</h2>
+              <p>
+                Avec cette application mobile, vous pouvez gérer les stocks de
+                votre boutique.
+              </p>
+              <p>
+                <span>Ajout de nouveau produit : </span>si vous ajoutez une
+                boisson alcoolisée, vous pouvez ajouter le degré d'alcool. L'app
+                vous empéchera d'ajouter un élément si son nom ou sa quantité ne
+                sont pas renseigné, ou si la marge est négative.
+              </p>
+              <p>
+                <span>Pour modifier ou supprimer un produit : </span> il vous
+                suffit de clicker sur l'élément que vous souhaitez modifier ou
+                le bouton X.
+              </p>
+              <p>
+                <span>Le stock :</span> un voyant vous prévient lorque votre
+                stock est faible. Il sera vert si le stock est supérieur a 10,
+                jaune entre 1 et 10, rouge si le stock est à zéro.
+              </p>
+            </div>
+            <div id="tri">
+              <p>Afficher par type :</p>
+              <select name="boissonType" id="triBoissonType">
+                <option value="all">Tout les produits</option>
+                <option value="soft">Boisson soft</option>
+                <option value="alcool">Boisson alcoolisée</option>
+                <option value="other">Autres (boissons chaudes ...)</option>
+              </select>
+            </div>
+          </div>
+          <!--Container-->
+          <table id="tableContent">
+            <thead>
+              <tr>
+                <th></th>
+                <th id="thQr"></th>
+                <th id="thName">Nom</th>
+                <th>Quantités</th>
+                <th>Prix d'achat HT</th>
+                <th>Prix de vente HT</th>
+                <th>Marge</th>
+                <th>Prix de vente TTC</th>
+                <th>Type de boisson</th>
+                <th>Degré d'alcool</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+        <!--Colone de droite-->
+        <div id="rightColumn">
+          <div id="menu">
+            <h2 id="menubtn">+</h2>
+          </div>
+          <div id="newProduct">
+            <h2>Ajouter un produit</h2>
+            <form action="GET">
+              <label for="productName">Nom du produit</label>
+              <input
+                type="text"
+                id="productName"
+                name="productName"
+                placeholder="Ice Tea"
+              />
+              <label for="quantity">Quantités</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                min="0"
+                placeholder="4"
+              />
+              <label for="priceBuy">Prix d'achat unitaire HT</label>
+              <input
+                type="number"
+                id="priceBuy"
+                name="priceBuy"
+                min="0"
+                step="any"
+                placeholder="1.5"
+              />
+              <label for="priceBuy" class="symbole">€</label>
+              <label for="priceSell">Prix de vente unitaire HT</label>
+              <input
+                type="number"
+                id="priceSell"
+                name="priceSell"
+                min="0"
+                step="any"
+                placeholder="2.5"
+              />
+              <label for="priceSell" class="symbole">€</label>
+              <label for="boissonType">Type</label>
+              <select name="boissonType" id="boissonType">
+                <option value="soft">Boisson soft</option>
+                <option value="alcool">Boisson alcoolisée</option>
+                <option value="other">Autres (boissons chaudes ...)</option>
+              </select>
+              <div id="typeAlcool">
+                <label for="alcoolDegree">Degré d'alcool</label>
+                <input
+                  type="number"
+                  id="alcoolDegree"
+                  min="0"
+                  step="any"
+                  name="alcoolDegree"
+                />
+                <label for="alcoolDegree" class="symbole">°</label>
+              </div>
+              <input
+                type="button"
+                id="validBtn"
+                name="validBtn"
+                value="Ajouter"
+              />
+            </form>
+            <div id="alertMessage"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Script création classes-->
+    <script type="text/javascript" src="Product.js"></script>
+    <script type="text/javascript" src="ProductAlcool.js"></script>
+    <script type="text/javascript" src="ProductSoft.js"></script>
+    <script type="text/javascript" src="ProductOther.js"></script>
+    <!--Script pour générer un qrcode-->
+    <script type="text/javascript" src="qrcode.js"></script>
+    <!--Script création fonction-->
+    <script type="text/javascript" src="localstorageFunction.js"></script>
+    <script type="text/javascript" src="menuFunction.js"></script>
+    <script type="text/javascript" src="messageFunction.js"></script>
+    <script type="text/javascript" src="supprFunction.js"></script>
+    <script type="text/javascript" src="modifFunction.js"></script>
+    <script type="text/javascript" src="displayFunction.js"></script>
+    <!--Script app-->
+    <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>
